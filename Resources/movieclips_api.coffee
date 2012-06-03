@@ -22,3 +22,22 @@ class MovieClipsAPI
     puts url
     url
 
+  get_stream_url: (clip_id, callback) ->
+    uri = "http://movieclips.com/webservices/get-movieclip-stream-url/?id=#{clip_id}"
+    puts "Getting #{uri}"
+    client = Ti.Network.createHTTPClient()
+    client.open 'GET', uri
+    client.onload = (r) -> 
+      if parseInt(@status) == 200
+        try
+          data = JSON.parse(@responseText)
+          url = "http://ios.movieclips.com#{data.url}"
+          puts "Found URL: #{url}"
+          callback(success: true, url: url)
+        catch e
+          callback(success:false, error: JSON.stringify(e))
+      else
+        callback(success: false, error: @status)
+    client.send()
+
+

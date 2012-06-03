@@ -1,9 +1,12 @@
 class SearchWindow
   constructor: ->
     @win = Ti.UI.createWindow()
+    @create_webview_proxy()
     @create_table_view()
     @create_search_view()
 
+  create_webview_proxy: ->
+    @win.add new WebviewProxy().view()
 
   create_table_view: ->
     @table_view = new ResultsTableView()

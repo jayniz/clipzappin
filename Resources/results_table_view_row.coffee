@@ -38,4 +38,10 @@ class ResultsTableViewRow
 
   add_event_listener: (clip, view) ->
     view.addEventListener 'click', ->
-      puts clip
+      api = new MovieClipsAPI()
+      api.get_stream_url clip.id, (s) ->
+        puts s
+        if s.success
+          Ti.App.fireEvent 'view_movie', url: s.url
+        else
+          alert "woops"
