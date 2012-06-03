@@ -5,9 +5,14 @@ class ResultsTableViewRow
     @clips = [clip1, clip2]
     @create_row()
     @create_clip_views()
+    @create_spinner()
 
   view: ->
     @row
+
+  create_spinner: ->
+    @spinner = Titanium.UI.createActivityIndicator()
+    @row.add @spinner
 
   create_row: ->
     @row = Ti.UI.createTableViewRow(
@@ -37,9 +42,9 @@ class ResultsTableViewRow
     @row.add v
 
   add_event_listener: (clip, view) ->
-    view.addEventListener 'click', ->
+    view.addEventListener 'click', =>
       api = new MovieClipsAPI()
-      api.get_stream_url clip.id, (s) ->
+      api.get_stream_url clip.id, (s) =>
         puts s
         if s.success
           Ti.App.fireEvent 'view_movie', url: s.url
