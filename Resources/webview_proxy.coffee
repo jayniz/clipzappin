@@ -6,6 +6,7 @@ class WebviewProxy
       bottom: 0
       left: 0
     )
+    @wv.addEventListener 'load', -> puts "did load"
     @register_event_listener()
 
   view: ->

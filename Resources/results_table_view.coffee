@@ -4,6 +4,7 @@ class ResultsTableView
       top:   50
       width: 320
       left:  0
+      opacity: 0
     )
     @init_search_handler()
 

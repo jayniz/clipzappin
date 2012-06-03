@@ -10,7 +10,7 @@ class ResultsTableViewRow
     @row
 
   create_spinner: ->
-    { style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK }
+    { style: Titanium.UI.iPhone.ActivityIndicatorStyle.WHITE }
     Titanium.UI.createActivityIndicator()
 
   create_row: ->

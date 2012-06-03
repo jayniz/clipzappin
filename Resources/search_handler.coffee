@@ -19,7 +19,10 @@ class SearchHandler
 
   empty_table_view: ->
     puts "Emptying table view"
+    a = Ti.UI.createAnimation(duration: 500)
+    a.opacity = 0
     @tv.setData([])
+    @tv.animate(a)
 
   fill_table_view: (clips) ->
     @rows = for i in [0...clips.length] by 2
@@ -27,5 +30,9 @@ class SearchHandler
       new ResultsTableViewRow(clips[i], clips[i+1]).view()
     puts "Setting tv with #{@rows.length} rows"
     @tv.setData(@rows)
+    if @rows.length > 0
+      a = Ti.UI.createAnimation(duration: 500)
+      a.opacity = 1
+      @tv.animate(a)
 
 

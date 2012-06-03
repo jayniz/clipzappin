@@ -9,6 +9,7 @@ class SearchView
     )
     @create_search_field()
     @create_search_button()
+    @create_search_event_listener()
 
   win: (window) ->
     window.add @view
@@ -20,13 +21,16 @@ class SearchView
       top: 6
       height: 30
       width:  272
-      value: 'Fear and Loathing'
+      hintText: "Enter search phrase"
       backgroundColor: 'transparent'
       font:
         fontFamily: 'Helvetica'
         fontSize: 16
       color: '#8c8c8b'
     )
+    @f.addEventListener 'blur', =>
+      Ti.App.fireEvent('search', q: @f.value)
+
     @view.add @f
 
   create_search_button: ->
@@ -48,18 +52,15 @@ class SearchView
 
   create_search_button_event_listener: ->
     @b.addEventListener 'click', =>
-      # Let's leak
-      animate = true
-
-      Ti.App.addEventListener 'search_complete', -> animate = false
-      a = Ti.UI.createAnimation(duration: 300, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN)
-      a.bottom = 0
-      b = Ti.UI.createAnimation(duration: 300, curve:Titanium.UI.ANIMATION_CURVE_EASE_OUT)
-      b.bottom = -50
-      a.addEventListener 'complete', => @bimg.animate(b)
-      b.addEventListener 'complete', => @bimg.animate(a) if animate
-      @bimg.animate(a)
       @f.blur()
 
-      Ti.App.fireEvent('search', q: @f.value)
+  create_search_event_listener: ->
+    Ti.App.addEventListener 'search', =>
+      animate = true
+      Ti.App.addEventListener 'search_complete', -> animate = false
+      a = Ti.UI.createAnimation(duration: 500, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN)
+      a.bottom = 0
+      a.addEventListener 'complete', (=> @bimg.bottom = -50; @bimg.animate(a) if animate)
+      @bimg.animate(a)
+
 
