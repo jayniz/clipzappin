@@ -2,8 +2,8 @@ class SearchView
   constructor: ->
     @view = Ti.UI.createView(
       top: 0
-      height: 50
-      backgroundColor: '#fff'
+      height: 60
+      backgroundImage: 'search_back.png'
     )
     @create_search_field()
     @create_search_button()
@@ -15,7 +15,7 @@ class SearchView
   create_search_field: ->
     @f = Ti.UI.createTextField(
       left:   20
-      top: 10
+      top: 5
       height: 30
       width:  280
       value: 'Las Vegas'

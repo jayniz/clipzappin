@@ -1,6 +1,6 @@
 class SearchWindow
   constructor: ->
-    @win = Ti.UI.createWindow()
+    @win = Ti.UI.createWindow(backgroundColor: '#fff')
     @create_webview_proxy()
     @create_table_view()
     @create_search_view()
