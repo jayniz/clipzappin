@@ -13,6 +13,7 @@ class SearchHandler
 
   handle_response: (r) ->
     puts "Search returned #{r.clips.length} clips"
+    Ti.App.fireEvent 'search_complete'
     @empty_table_view()
     @fill_table_view(r.clips)
 

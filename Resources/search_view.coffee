@@ -4,6 +4,7 @@ class SearchView
       top: 0
       height: 60
       backgroundImage: 'search_back.png'
+      width:320
     )
     @create_search_field()
     @create_search_button()
@@ -17,7 +18,7 @@ class SearchView
       left:   20
       top: 5
       height: 30
-      width:  280
+      width:  272
       value: 'Las Vegas'
       backgroundColor: 'transparent'
       font:
@@ -28,16 +29,35 @@ class SearchView
     @view.add @f
 
   create_search_button: ->
-    @b = Ti.UI.createButton(
+    @b = Ti.UI.createView(
+      top: 0
       right:  0
-      width:  50
-      height: 50
+      width:  58
+      height: 40
     )
+    @bimg = Ti.UI.createImageView(
+      bottom:-30
+      height: 40
+      image: 'loader_asset.png'
+    )
+    @b.add @bimg
     @create_search_button_event_listener()
     @view.add @b
 
   create_search_button_event_listener: ->
     @b.addEventListener 'click', =>
+      # Let's leak
+      animate = true
+
+      Ti.App.addEventListener 'search_complete', -> animate = false
+      a = Ti.UI.createAnimation(duration: 250, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT)
+      a.bottom = 0
+      b = Ti.UI.createAnimation(duration: 250, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT)
+      b.bottom = -30
+      a.addEventListener 'complete', => @bimg.animate(b)
+      b.addEventListener 'complete', => @bimg.animate(a) if animate
+      @bimg.animate(a)
       @f.blur()
+
       Ti.App.fireEvent('search', q: @f.value)
 
