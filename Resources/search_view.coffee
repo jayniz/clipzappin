@@ -20,7 +20,7 @@ class SearchView
       top: 6
       height: 30
       width:  272
-      value: 'Las Vegas'
+      value: 'Fear and Loathing'
       backgroundColor: 'transparent'
       font:
         fontFamily: 'Helvetica'
