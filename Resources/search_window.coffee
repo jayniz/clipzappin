@@ -1,6 +1,9 @@
 class SearchWindow
   constructor: ->
-    @win = Ti.UI.createWindow(backgroundColor: '#fff')
+    @win = Ti.UI.createWindow(
+      backgroundColor: '#fff'
+      orientationModes: [Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT, Titanium.UI.PORTRAIT]
+    )
     @create_webview_proxy()
     @create_background_view()
     @create_table_view()
