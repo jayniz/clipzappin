@@ -12,18 +12,25 @@ class SearchView
     @
 
   create_search_field: ->
-    f = Ti.UI.createTextField(
+    @f = Ti.UI.createTextField(
       backgroundColor: '#ffffff'
       left:   0
       height: 50
       width:  280
+      value: 'top gun'
     )
-    @view.add f
+    @view.add @f
 
   create_search_button: ->
-    b = Ti.UI.createButton(
+    @b = Ti.UI.createButton(
       right:  0
       width:  50
       height: 50
     )
-    @view.add b
+    @create_search_button_event_listener()
+    @view.add @b
+
+  create_search_button_event_listener: ->
+    @b.addEventListener 'click', =>
+      Ti.App.fireEvent('search', q: @f.value)
+
