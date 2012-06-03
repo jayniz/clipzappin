@@ -11,24 +11,31 @@ class ResultsTableViewRow
 
   create_row: ->
     @row = Ti.UI.createTableViewRow(
-      classname: 'result',
+      allowSelection: false
+      classname: 'result'
       height: 100
       width: 320
       top: 0
       left: 0
+      selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
     )
 
   create_clip_views: ->
     @cv1 = @create_clip_view(@clips[0], 0)
-    @cv2 = @create_clip_view(@clips[1], 150)
+    @cv2 = @create_clip_view(@clips[1], 160)
     true
 
   create_clip_view: (clip, left) ->
-    c = Ti.UI.createImageView(
+    v = Ti.UI.createImageView(
       height: 100
       width: 160
       top: 0
       left: left
       image: clip.image_url
     )
-    @row.add c
+    @add_event_listener clip, v
+    @row.add v
+
+  add_event_listener: (clip, view) ->
+    view.addEventListener 'click', ->
+      puts clip

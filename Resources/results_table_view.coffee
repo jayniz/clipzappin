@@ -1,8 +1,9 @@
 class ResultsTableView
   constructor: ->
     @table_view = Ti.UI.createTableView(
-      top: 50
+      top:   50
       width: 320
+      left:  0
     )
     @init_search_handler()
 

@@ -25,7 +25,6 @@ class SearchHandler
       puts "...row #{i/2}"
       new ResultsTableViewRow(clips[i], clips[i+1]).view()
     puts "Setting tv with #{@rows.length} rows"
-    puts @rows[0]
     @tv.setData(@rows)
 
 
