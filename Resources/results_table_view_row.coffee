@@ -5,14 +5,13 @@ class ResultsTableViewRow
     @clips = [clip1, clip2]
     @create_row()
     @create_clip_views()
-    @create_spinner()
 
   view: ->
     @row
 
   create_spinner: ->
-    @spinner = Titanium.UI.createActivityIndicator()
-    @row.add @spinner
+    { style: Titanium.UI.iPhone.ActivityIndicatorStyle.WHITE }
+    Titanium.UI.createActivityIndicator()
 
   create_row: ->
     @row = Ti.UI.createTableViewRow(
@@ -38,15 +37,24 @@ class ResultsTableViewRow
       left: left
       image: clip.image_url
     )
+    v._spinner = @create_spinner()
+    v.add v._spinner
     @add_event_listener clip, v
     @row.add v
 
   add_event_listener: (clip, view) ->
-    view.addEventListener 'click', =>
+    view.addEventListener 'click', ->
+      view._spinner.show()
+      view.opacity = 0.5
       api = new MovieClipsAPI()
-      api.get_stream_url clip.id, (s) =>
+      api.get_stream_url clip.id, (s) ->
         puts s
         if s.success
           Ti.App.fireEvent 'view_movie', url: s.url
         else
           alert "woops"
+        setTimeout(->
+          view._spinner.hide()
+          view.opacity = 1
+        , 2000)
+
