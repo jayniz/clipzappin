@@ -1,7 +1,7 @@
 class WebviewProxy
   constructor: ->
     @wv = Ti.UI.createWebView(
-      height: 10
+      height: 1
       width: 320
       bottom: 0
       left: 0
