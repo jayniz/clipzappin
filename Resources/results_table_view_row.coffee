@@ -10,7 +10,7 @@ class ResultsTableViewRow
     @row
 
   create_spinner: ->
-    { style: Titanium.UI.iPhone.ActivityIndicatorStyle.WHITE }
+    { style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK }
     Titanium.UI.createActivityIndicator()
 
   create_row: ->
@@ -53,8 +53,5 @@ class ResultsTableViewRow
           Ti.App.fireEvent 'view_movie', url: s.url
         else
           alert "woops"
-        setTimeout(->
-          view._spinner.hide()
-          view.opacity = 1
-        , 2000)
+        setTimeout((-> view._spinner.hide(); view.opacity = 1), 2000)
 
