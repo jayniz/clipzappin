@@ -52,9 +52,9 @@ class SearchView
       animate = true
 
       Ti.App.addEventListener 'search_complete', -> animate = false
-      a = Ti.UI.createAnimation(duration: 500, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN)
+      a = Ti.UI.createAnimation(duration: 300, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN)
       a.bottom = 0
-      b = Ti.UI.createAnimation(duration: 500, curve:Titanium.UI.ANIMATION_CURVE_EASE_OUT)
+      b = Ti.UI.createAnimation(duration: 300, curve:Titanium.UI.ANIMATION_CURVE_EASE_OUT)
       b.bottom = -50
       a.addEventListener 'complete', => @bimg.animate(b)
       b.addEventListener 'complete', => @bimg.animate(a) if animate
