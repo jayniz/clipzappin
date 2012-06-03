@@ -19,7 +19,7 @@ class SearchView
     @f = Ti.UI.createTextField(
       returnKeyType: Titanium.UI.RETURNKEY_SEARCH
       left:   20
-      top: 6
+      top: 10
       height: 30
       width:  272
       hintText: "Enter search phrase"
@@ -30,7 +30,7 @@ class SearchView
       color: '#8c8c8b'
     )
     @f.addEventListener 'blur', =>
-      Ti.App.fireEvent('search', q: @f.value)
+      Ti.App.fireEvent('search', q: "#{@f.value}")
 
     @view.add @f
 
@@ -39,7 +39,7 @@ class SearchView
       top: 2
       right:  0
       width:  58
-      height: 40
+      height: 48
     )
     @bimg = Ti.UI.createImageView(
       width: 58

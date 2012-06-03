@@ -8,7 +8,7 @@ class SearchHandler
     @
 
   handle_search: (e) ->
-    @api.search(e.q, (r) => @handle_response(r))
+    @api.search("#{e.q}", (r) => @handle_response(r))
     puts e
 
   handle_response: (r) ->
