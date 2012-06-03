@@ -9,6 +9,5 @@ Ti.include "results_table_view.js"
 puts = (w) ->
   Titanium.API.error JSON.stringify(w)
 
-new SearchWindow().open()
+setTimeout (-> new SearchWindow().open(); Ti.App.fireEvent 'search', q: "Las Vegas"), 5000
 
-Ti.App.fireEvent 'search', q: "Las Vegas"
