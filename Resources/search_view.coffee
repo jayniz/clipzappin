@@ -1,7 +1,8 @@
 class SearchView
   constructor: ->
     @view = Ti.UI.createView(
-      top: 0
+      top: 1
+      left: 0
       height: 60
       backgroundImage: 'search_back.png'
       width:320
@@ -16,7 +17,7 @@ class SearchView
   create_search_field: ->
     @f = Ti.UI.createTextField(
       left:   20
-      top: 5
+      top: 6
       height: 30
       width:  272
       value: 'Las Vegas'
@@ -30,14 +31,15 @@ class SearchView
 
   create_search_button: ->
     @b = Ti.UI.createView(
-      top: 0
+      top: 2
       right:  0
       width:  58
       height: 40
     )
     @bimg = Ti.UI.createImageView(
-      bottom:-30
-      height: 40
+      width: 58
+      bottom:-50
+      height: 60
       image: 'loader_asset.png'
     )
     @b.add @bimg
@@ -50,10 +52,10 @@ class SearchView
       animate = true
 
       Ti.App.addEventListener 'search_complete', -> animate = false
-      a = Ti.UI.createAnimation(duration: 250, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT)
+      a = Ti.UI.createAnimation(duration: 500, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN)
       a.bottom = 0
-      b = Ti.UI.createAnimation(duration: 250, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT)
-      b.bottom = -30
+      b = Ti.UI.createAnimation(duration: 500, curve:Titanium.UI.ANIMATION_CURVE_EASE_OUT)
+      b.bottom = -50
       a.addEventListener 'complete', => @bimg.animate(b)
       b.addEventListener 'complete', => @bimg.animate(a) if animate
       @bimg.animate(a)

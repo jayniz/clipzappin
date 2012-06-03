@@ -10,5 +10,5 @@ puts = (w) ->
   Titanium.API.error JSON.stringify(w)
 
 delay = 1
-setTimeout (-> new SearchWindow().open(); Ti.App.fireEvent 'search', q: "Las Vegas"), delay
+setTimeout (-> new SearchWindow().open();), delay
 
