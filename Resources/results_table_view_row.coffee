@@ -13,6 +13,9 @@ class ResultsTableViewRow
     @row = Ti.UI.createTableViewRow(
       classname: 'result',
       height: 100
+      width: 320
+      top: 0
+      left: 0
     )
 
   create_clip_views: ->
@@ -23,9 +26,9 @@ class ResultsTableViewRow
   create_clip_view: (clip, left) ->
     c = Ti.UI.createImageView(
       height: 100
-      width: 150
+      width: 160
       top: 0
       left: left
-      url: clip.thumbnail_url
+      image: clip.image_url
     )
     @row.add c

@@ -17,7 +17,7 @@ class SearchView
       left:   0
       height: 50
       width:  280
-      value: 'top gun'
+      value: 'Las Vegas'
     )
     @view.add @f
 
@@ -32,5 +32,6 @@ class SearchView
 
   create_search_button_event_listener: ->
     @b.addEventListener 'click', =>
+      @f.blur()
       Ti.App.fireEvent('search', q: @f.value)
 
