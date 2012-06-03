@@ -9,6 +9,6 @@ Ti.include "results_table_view.js"
 puts = (w) ->
   Titanium.API.error JSON.stringify(w)
 
-delay = 3000
+delay = 0
 setTimeout (-> new SearchWindow().open();), delay
 

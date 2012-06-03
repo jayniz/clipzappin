@@ -34,5 +34,3 @@ class SearchHandler
       a = Ti.UI.createAnimation(duration: 500)
       a.opacity = 1
       @tv.animate(a)
-
-

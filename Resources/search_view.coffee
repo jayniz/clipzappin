@@ -17,6 +17,7 @@ class SearchView
 
   create_search_field: ->
     @f = Ti.UI.createTextField(
+      returnKeyType: Titanium.UI.RETURNKEY_SEARCH
       left:   20
       top: 6
       height: 30
@@ -59,7 +60,7 @@ class SearchView
       animate = true
       Ti.App.addEventListener 'search_complete', -> animate = false
       a = Ti.UI.createAnimation(duration: 500, curve:Titanium.UI.ANIMATION_CURVE_EASE_IN)
-      a.bottom = 0
+      a.bottom = 5
       a.addEventListener 'complete', (=> @bimg.bottom = -50; @bimg.animate(a) if animate)
       @bimg.animate(a)
 
