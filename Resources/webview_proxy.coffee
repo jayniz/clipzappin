@@ -1,23 +1,23 @@
 class WebviewProxy
   constructor: ->
-    @wv = Ti.UI.createWebView(
+    @vp = Titanium.Media.createVideoPlayer(
+      movieControlMode:Titanium.Media.VIDEO_CONTROL_DEFAULT
+      fullscreen: true
       height: 1
-      width: 320
-      bottom: 0
-      left: 0
+      bottom:0
     )
-    @vp = Titanium.Media.createVideoPlayer()
     @vp.hide()
-    # @wv.addEventListener 'error', -> setTimeout((=> puts "did load"; @wv.url = "http://google.com"), 3000)
     @register_event_listener()
 
   view: ->
     @vp
 
   register_event_listener: (e) ->
+    @vp.addEventListener 'fullscreen', (e) =>
+      return if e.entering
+      @vp.stop()
+      @vp.hide()
     Ti.App.addEventListener 'view_movie', (e) =>
       @vp.url = e.url
       @vp.show()
       @vp.play()
-      # puts "Proxy opening #{e.url}"
-      # @wv.url = e.url
