@@ -1,18 +1,7 @@
-Welcome to your Appcelerator Titanium Mobile Project
+Part 2 of my [Movie Hack Day 2012](http://moviehackday.com) project.
+An (unofficial) movieclips.com app that lets you search for clips and
+watch them right on your phone.
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
-
-
-
-----------------------------------
-Stuff our legal folk make us say:
-
-Appcelerator, Appcelerator Titanium and associated marks and logos are 
-trademarks of Appcelerator, Inc. 
-
-Titanium is Copyright (c) 2008-2012 by Appcelerator, Inc. All Rights Reserved.
-
-Titanium is licensed under the Apache Public License (Version 2). Please
-see the LICENSE file for the full license.
-
+Part 1 is a JSON interface to movieclips.com's XML/Atom API with some
+extra sugar, check it out over at github, it's nice and fun and fast:
+[jsonclips.herokuapp.com](http://jsonclips.herokuapp.com)
