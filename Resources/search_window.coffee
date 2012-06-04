@@ -4,10 +4,10 @@ class SearchWindow
       backgroundColor: '#fff'
       orientationModes: [Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT, Titanium.UI.PORTRAIT]
     )
-    @create_webview_proxy()
     @create_background_view()
     @create_table_view()
     @create_search_view()
+    @create_webview_proxy()
 
   create_webview_proxy: ->
     @win.add new WebviewProxy().view()

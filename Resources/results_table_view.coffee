@@ -6,7 +6,8 @@ class ResultsTableView
       left:  0
       opacity: 0
       style: Ti.UI.iPhone.TableViewStyle.PLAIN,
-      separatorColor: '#fff'
+      separatorColor: '#000'
+      backgroundColor: '#000'
     )
     @init_search_handler()
 

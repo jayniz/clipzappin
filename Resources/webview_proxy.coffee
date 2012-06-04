@@ -6,14 +6,18 @@ class WebviewProxy
       bottom: 0
       left: 0
     )
-    @wv.addEventListener 'load', -> puts "did load"
+    @vp = Titanium.Media.createVideoPlayer()
+    @vp.hide()
+    # @wv.addEventListener 'error', -> setTimeout((=> puts "did load"; @wv.url = "http://google.com"), 3000)
     @register_event_listener()
 
   view: ->
-    @wv
+    @vp
 
   register_event_listener: (e) ->
     Ti.App.addEventListener 'view_movie', (e) =>
-      puts "Proxy opening #{e.url}"
-      @wv.url = e.url
-
+      @vp.url = e.url
+      @vp.show()
+      @vp.play()
+      # puts "Proxy opening #{e.url}"
+      # @wv.url = e.url
