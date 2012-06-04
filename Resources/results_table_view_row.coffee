@@ -17,7 +17,7 @@ class ResultsTableViewRow
       backgroundColor: '#000'
       allowSelection: false
       classname: 'result'
-      height: 100
+      height: 105
       width: 320
       top: 0
       left: 0
@@ -53,5 +53,5 @@ class ResultsTableViewRow
           Ti.App.fireEvent 'view_movie', url: s.url
         else
           alert "woops"
-        setTimeout((-> view._spinner.hide(); view.opacity = 1), 4000)
+        setTimeout((-> view._spinner.hide(); view.opacity = 1), 5000)
 
